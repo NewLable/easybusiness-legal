@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Удаление аккаунта | Easy Business</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    .lang {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <section class="lang" id="ru">
+    <h1>Удаление аккаунта в приложении Easy Business</h1>
+    <p>Вы можете удалить свою учетную запись и все связанные с ней данные, следуя этим шагам:</p>
+    <ol>
+      <li>Откройте приложение Easy Business</li>
+      <li>Перейдите в раздел «Профиль» → «Настройки»</li>
+      <li>Нажмите кнопку «Удалить аккаунт»</li>
+      <li>Подтвердите удаление</li>
+    </ol>
+    <h3>Что будет удалено:</h3>
+    <ul>
+      <li>Ваш аккаунт и личные данные (имя, email, телефон)</li>
+      <li>Все данные магазина (товары, выручка, смены и т.д.)</li>
+    </ul>
+
+    <h3>Сроки удаления:</h3>
+    <p>Данные удаляются в течение 7 дней после подтверждения.</p>
+
+    <h3>Не можете войти?</h3>
+    <p>Если вы не можете войти в приложение, отправьте запрос на <a href="mailto:support@yourdomain.com">support@yourdomain.com</a> с указанием email, под которым зарегистрированы.</p>
+  </section>
+
+  <hr />
+
+  <section class="lang" id="en">
+    <h1>Account Deletion in Easy Business App</h1>
+    <p>You can delete your account and all related data by following these steps:</p>
+    <ol>
+      <li>Open the Easy Business app</li>
+      <li>Go to "Profile" → "Settings"</li>
+      <li>Tap the "Delete Account" button</li>
+      <li>Confirm the deletion</li>
+    </ol>
+    <h3>What will be deleted:</h3>
+    <ul>
+      <li>Your account and personal data (name, email, phone number)</li>
+      <li>All store data (products, revenue, shifts, etc.)</li>
+    </ul>
+
+    <h3>Deletion timeline:</h3>
+    <p>All data will be permanently deleted within 7 days of confirmation.</p>
+
+    <h3>Can't access the app?</h3>
+    <p>If you cannot log in, send a request to <a href="mailto:support@yourdomain.com">support@yourdomain.com</a> including the email you registered with.</p>
+  </section>
+</body>
+</html>
