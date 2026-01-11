@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accept Invite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f6f7f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      font-size: 16px;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .error { color: #dc2626; margin-top: 12px; }
+    .success { color: #16a34a; margin-top: 12px; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Accept invitation</h2>
+  <input type="password" id="password" placeholder="Create password" />
+  <button onclick="acceptInvite()">Accept invite</button>
+  <div id="result"></div>
+</div>
+
+<script>
+  const token = new URLSearchParams(window.location.search).get("token");
+
+  if (!token) {
+    document.getElementById("result").innerHTML =
+      "<p class='error'>Invalid invite link</p>";
+  }
+
+  async function acceptInvite() {
+    const password = document.getElementById("password").value;
+    const result = document.getElementById("result");
+
+    result.innerHTML = "";
+
+    if (!password || password.length < 8) {
+      result.innerHTML = "<p class='error'>Password must be at least 8 characters</p>";
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        "https://YOUR_PROJECT_ID.supabase.co/functions/v1/accept_invite",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token, password }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        result.innerHTML = `<p class="error">${data.error}</p>`;
+        return;
+      }
+
+      result.innerHTML =
+        "<p class='success'>Invite accepted! You can now log in.</p>";
+
+    } catch (e) {
+      result.innerHTML = "<p class='error'>Network error</p>";
+    }
+  }
+</script>
+
+</body>
+</html>
