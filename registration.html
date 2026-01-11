@@ -115,12 +115,12 @@
 
     try {
       const res = await fetch(
-        "https://YOUR_PROJECT_ID.supabase.co/functions/v1/complete_admin_registration",
+        "https://https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/complete_admin_registration",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "apikey": "YOUR_SUPABASE_ANON_KEY"
+            "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZXdsdmxiYml5d2pmam9hd2V3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyODY1ODIsImV4cCI6MjA3Mzg2MjU4Mn0.bP7xwohBa5JOLT4_cQYz-nhprr6m6a43NUt-HcPCq8c"
           },
           body: JSON.stringify({ token, password })
         }
