@@ -62,16 +62,19 @@
     result.innerHTML = "";
 
     if (!password || password.length < 8) {
-      result.innerHTML = "<p class='error'>Password must be at least 8 characters</p>";
+      result.innerHTML =
+        "<p class='error'>Password must be at least 8 characters</p>";
       return;
     }
 
     try {
       const res = await fetch(
-        "https://YOUR_PROJECT_ID.supabase.co/functions/v1/accept_invite",
+        "https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify({ token, password }),
         }
       );
@@ -79,7 +82,7 @@
       const data = await res.json();
 
       if (!res.ok) {
-        result.innerHTML = `<p class="error">${data.error}</p>`;
+        result.innerHTML = `<p class="error">${data.error ?? "Unknown error"}</p>`;
         return;
       }
 
@@ -87,10 +90,12 @@
         "<p class='success'>Invite accepted! You can now log in.</p>";
 
     } catch (e) {
+      console.error("NETWORK ERROR:", e);
       result.innerHTML = "<p class='error'>Network error</p>";
     }
   }
 </script>
+
 
 </body>
 </html>
