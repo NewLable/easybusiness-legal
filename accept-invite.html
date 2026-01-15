@@ -48,53 +48,36 @@
 </div>
 
 <script>
-  const token = new URLSearchParams(window.location.search).get("token");
+  const token = new URLSearchParams(window.location.search).get('token');
 
-  if (!token) {
-    document.getElementById("result").innerHTML =
-      "<p class='error'>Invalid invite link</p>";
-  }
+  async function submitForm() {
+    const password = document.getElementById('password').value;
 
-  async function acceptInvite() {
-    const password = document.getElementById("password").value;
-    const result = document.getElementById("result");
-
-    result.innerHTML = "";
-
-    if (!password || password.length < 8) {
-      result.innerHTML =
-        "<p class='error'>Password must be at least 8 characters</p>";
-      return;
-    }
-
-    try {
-      const res = await fetch(
-        "https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token, password }),
-        }
-      );
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        result.innerHTML = `<p class="error">${data.error ?? "Unknown error"}</p>`;
-        return;
+    const res = await fetch(
+      'https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token,
+          password,
+        }),
       }
+    );
 
-      result.innerHTML =
-        "<p class='success'>Invite accepted! You can now log in.</p>";
+    const data = await res.json();
+    console.log(data);
 
-    } catch (e) {
-      console.error("NETWORK ERROR:", e);
-      result.innerHTML = "<p class='error'>Network error</p>";
+    if (!res.ok) {
+      alert(data.error || 'Ошибка');
+    } else {
+      alert('Аккаунт создан, можно входить');
     }
   }
 </script>
+
 
 
 </body>
