@@ -1,123 +1,275 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Политика и Условия | Easy Business</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #333;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easy Business — Legal Terms</title>
+
+<style>
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  padding: 24px;
+  line-height: 1.65;
+  background:#f7f9fc;
+}
+
+.card {
+  background:white;
+  padding:22px;
+  border-radius:16px;
+  margin-bottom:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.07);
+}
+
+.langbar {
+  display:flex;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.langbar button {
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid #ccc;
+  background:white;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.langbar button.active {
+  background:#1f6feb;
+  color:white;
+  border-color:#1f6feb;
+}
+
+.section { display:none; }
+.section.active { display:block; }
+
+h1 { margin-top:0; }
+small { color:#666; }
+</style>
 </head>
+
 <body>
-  <h1>Политика конфиденциальности</h1>
-  <p><strong>Дата вступления в силу:</strong> 19 мая 2025 года</p>
 
-  <p>Приложение <strong>Easy Business</strong> (далее — «Приложение») уважает ваше право на конфиденциальность. Мы собираем и обрабатываем только минимальные данные, необходимые для регистрации и входа:</p>
+<div class="langbar">
+<button id="btn-ru" onclick="setLang('ru')">RU</button>
+<button id="btn-en" onclick="setLang('en')">EN</button>
+<button id="btn-tr" onclick="setLang('tr')">TR</button>
+</div>
 
-  <h2>Собираемые данные</h2>
-  <ul>
-    <li>Адрес электронной почты (с подтверждением)</li>
-    <li>Имя пользователя</li>
-    <li>Номер телефона (без подтверждения)</li>
-  </ul>
+<!-- ========================== RU ========================== -->
 
-  <h2>Как мы используем данные</h2>
-  <ul>
-    <li>Для предоставления доступа к Приложению</li>
-    <li>Для поддержки пользователей</li>
-    <li>Для возможных уведомлений о подписке или важных изменениях</li>
-  </ul>
+<div id="ru" class="section">
 
-  <h2>Безопасность</h2>
-  <p>Мы используем современные средства защиты данных и не передаём их третьим лицам.</p>
+<div class="card">
+<h1>Easy Business — Условия использования и Политика конфиденциальности</h1>
+<p><strong>Версия документа:</strong> 2.0<br>
+<strong>Дата вступления:</strong> 19 мая 2025</p>
+</div>
 
-  <h2>Пробный период и подписка</h2>
-  <p>Приложение может предоставлять бесплатный пробный период и/или подписку, детали которой будут отображены в интерфейсе приложения.</p>
+<div class="card">
+<h2>1. О сервисе</h2>
+Сервис предоставляет инструменты учета, аналитики и управления бизнес-операциями.  
+Сервис не является бухгалтерской, налоговой, аудиторской или юридической системой.
+</div>
 
-  <h2>Контакты</h2>
-  <p>По вопросам конфиденциальности пишите на: <a href="mailto:support@easybusiness.space">support@easybusiness.space</a></p>
+<div class="card">
+<h2>2. Регистрация и аккаунт</h2>
+Пользователь обязан предоставлять достоверные данные.  
+Вы несете ответственность за безопасность доступа к аккаунту.
+</div>
 
-  <hr>
+<div class="card">
+<h2>3. Бизнес-данные пользователя</h2>
+Все данные о продажах, доходах, товарах и операциях вводятся пользователем.  
+Мы не проверяем их точность.  
+Пользователь полностью несет ответственность за:
+<ul>
+<li>налоговые расчеты</li>
+<li>бухгалтерскую отчетность</li>
+<li>финансовые решения</li>
+</ul>
+</div>
 
-  <h1>Privacy Policy</h1>
-  <p><strong>Effective Date:</strong> May 19, 2025</p>
+<div class="card">
+<h2>4. Подписки и платежи</h2>
+Может применяться пробный период и подписка.  
+Платежи обрабатываются магазинами приложений.  
+Возвраты регулируются правилами платформы.
+</div>
 
-  <p>The <strong>Easy Business</strong> app (hereinafter “App”) respects your privacy. We collect only the minimum data required for registration and login:</p>
+<div class="card">
+<h2>5. Облачное хранение</h2>
+Используются сторонние облачные провайдеры.  
+Мы не гарантируем абсолютную доступность инфраструктуры.
+</div>
 
-  <h2>Collected Data</h2>
-  <ul>
-    <li>Email address (with verification)</li>
-    <li>Username</li>
-    <li>Phone number (not verified)</li>
-  </ul>
+<div class="card">
+<h2>6. Потеря данных</h2>
+Пользователь обязан самостоятельно обеспечивать резервные копии.  
+Мы не несем ответственности за потерю данных.
+</div>
 
-  <h2>Usage of Data</h2>
-  <ul>
-    <li>To provide access to the App</li>
-    <li>To offer user support</li>
-    <li>To notify you about subscriptions or updates</li>
-  </ul>
+<div class="card">
+<h2>7. Ограничение гарантий</h2>
+Сервис предоставляется «как есть».  
+Не гарантируется бесперебойность или отсутствие ошибок.
+</div>
 
-  <h2>Security</h2>
-  <p>We implement modern security practices and do not share your data with third parties.</p>
+<div class="card">
+<h2>8. Ограничение ответственности</h2>
+Мы не отвечаем за:
+<ul>
+<li>упущенную прибыль</li>
+<li>бизнес-убытки</li>
+<li>налоговые штрафы</li>
+<li>ошибки учета</li>
+<li>решения пользователя</li>
+</ul>
 
-  <h2>Trial & Subscription</h2>
-  <p>The app may offer a free trial and/or subscription. Full details will be shown in the app.</p>
+Максимальная совокупная ответственность ограничена суммой подписки за последние 3 месяца.
+</div>
 
-  <h2>Contact</h2>
-  <p>For any privacy concerns, contact us at: <a href="mailto:support@easybusiness.space">support@easybusiness.space</a></p>
+<div class="card">
+<h2>9. Запрещенное использование</h2>
+Запрещено:
+<ul>
+<li>незаконное использование</li>
+<li>попытки взлома</li>
+<li>перегрузка серверов</li>
+<li>автоматизированные атаки</li>
+</ul>
+</div>
 
-  <hr />
+<div class="card">
+<h2>10. Блокировка доступа</h2>
+Доступ может быть ограничен при нарушениях условий.
+</div>
 
-  <h1>Условия использования</h1>
-  <p><strong>Дата вступления в силу:</strong> 19 мая 2025 года</p>
+<div class="card">
+<h2>11. Возраст</h2>
+Использование разрешено только совершеннолетним.
+</div>
 
-  <p>Настоящие условия регулируют использование приложения <strong>Easy Business</strong>. Используя Приложение, вы соглашаетесь соблюдать данные условия.</p>
+<div class="card">
+<h2>12. GDPR / KVKK стиль права пользователя</h2>
+Пользователь может:
+<ul>
+<li>запросить удаление данных</li>
+<li>получить копию данных</li>
+<li>запросить исправление</li>
+</ul>
+</div>
 
-  <h2>Использование приложения</h2>
-  <ul>
-    <li>Вы должны предоставить достоверную информацию при регистрации.</li>
-    <li>Вы не должны использовать Приложение для незаконных целей.</li>
-  </ul>
+<div class="card">
+<h2>13. Форс-мажор</h2>
+Мы не отвечаем за события вне разумного контроля.
+</div>
 
-  <h2>Ограничение ответственности</h2>
-  <p>Приложение предоставляется «как есть». Мы не несем ответственности за возможные сбои или потерю данных.</p>
+<div class="card">
+<h2>14. Изменения условий</h2>
+Условия могут обновляться.  
+Новая версия публикуется по этой ссылке.
+</div>
 
-  <h2>Изменения</h2>
-  <p>Мы оставляем за собой право изменять условия в любое время. Об изменениях будет сообщено в приложении.</p>
+<div class="card">
+<h2>Контакты</h2>
+support@easybusiness.space
+</div>
 
-  <h2>Контакты</h2>
-  <p>По вопросам использования обращайтесь: <a href="mailto:support@easybusiness.space">support@easybusiness.space</a></p>
+</div>
 
-  <hr />
+<!-- ========================== EN ========================== -->
 
-  <h1>Terms of Use</h1>
-  <p><strong>Effective Date:</strong> May 19, 2025</p>
+<div id="en" class="section">
 
-  <p>These terms govern your use of the <strong>Easy Business</strong> app. By using the App, you agree to comply with these terms.</p>
+<div class="card">
+<h1>Easy Business — Terms of Use & Privacy Policy</h1>
+Version 2.0
+</div>
 
-  <h2>App Usage</h2>
-  <ul>
-    <li>You must provide accurate information when registering.</li>
-    <li>You may not use the App for unlawful purposes.</li>
-  </ul>
+<div class="card">
+Service provides business tracking tools. Not accounting or legal software.
+</div>
 
-  <h2>Limitation of Liability</h2>
-  <p>The App is provided "as is." We are not liable for any disruptions or data loss.</p>
+<div class="card">
+Users are responsible for business and financial data accuracy.
+</div>
 
-  <h2>Changes</h2>
-  <p>We reserve the right to change these terms at any time. Changes will be reflected within the app.</p>
+<div class="card">
+Subscriptions may apply. Billing handled by app stores.
+</div>
 
-  <h2>Contact</h2>
-  <p>For usage-related questions, contact: <a href="mailto:support@easybusiness.space">support@easybusiness.space</a></p>
+<div class="card">
+Service provided “as is”. No uptime guarantee.
+</div>
+
+<div class="card">
+Liability limited to last 3 months subscription fees.
+</div>
+
+<div class="card">
+Users may request deletion or export of their data.
+</div>
+
+<div class="card">
+Contact: support@easybusiness.space
+</div>
+
+</div>
+
+<!-- ========================== TR ========================== -->
+
+<div id="tr" class="section">
+
+<div class="card">
+<h1>Easy Business — Kullanım Şartları ve Gizlilik</h1>
+Sürüm 2.0
+</div>
+
+<div class="card">
+Hizmet muhasebe veya hukuk sistemi değildir.
+</div>
+
+<div class="card">
+Kullanıcı ticari verilerden sorumludur.
+</div>
+
+<div class="card">
+Abonelik uygulanabilir.
+</div>
+
+<div class="card">
+Hizmet olduğu gibi sunulur.
+</div>
+
+<div class="card">
+Sorumluluk son 3 aylık ücret ile sınırlıdır.
+</div>
+
+<div class="card">
+Veri silme talep edilebilir.
+</div>
+
+<div class="card">
+İletişim: support@easybusiness.space
+</div>
+
+</div>
+
+<script>
+function setLang(l){
+ document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+ document.getElementById(l).classList.add('active');
+ document.querySelectorAll('.langbar button').forEach(b=>b.classList.remove('active'));
+ document.getElementById('btn-'+l).classList.add('active');
+ localStorage.setItem('lang',l);
+}
+setLang(localStorage.getItem('lang')||'ru');
+</script>
+
 </body>
 </html>
