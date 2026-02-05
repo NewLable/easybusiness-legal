@@ -1,84 +1,319 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Accept Invite</title>
+  <title>Easy Business — Invite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
     body {
+      margin: 0;
       font-family: system-ui, sans-serif;
-      background: #f6f7f9;
+      background: linear-gradient(135deg, #f4f6fb, #eef2ff);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
+
     .card {
       background: white;
-      padding: 24px;
-      border-radius: 12px;
+      padding: 28px;
+      border-radius: 18px;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 440px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      text-align: center;
     }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 12px;
-      font-size: 16px;
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #2563eb;
+      margin-bottom: 8px;
     }
-    button {
-      background: #3b82f6;
-      color: white;
-      border: none;
-      border-radius: 8px;
+
+    h2 {
+      margin: 10px 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    p {
+      font-size: 14px;
+      color: #4b5563;
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+
+    .lang-switch {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .lang-switch button {
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      padding: 6px 12px;
+      border-radius: 10px;
       cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
     }
-    .error { color: #dc2626; margin-top: 12px; }
-    .success { color: #16a34a; margin-top: 12px; }
+
+    .lang-switch button.active {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+    .field {
+      text-align: left;
+      margin-top: 14px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 42px 12px 12px;
+      font-size: 15px;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+
+    .toggle {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    .error {
+      font-size: 13px;
+      color: #dc2626;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .success {
+      font-size: 15px;
+      color: #16a34a;
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    button.main {
+      width: 100%;
+      margin-top: 18px;
+      padding: 13px;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button.main:hover {
+      background: #1e40af;
+    }
   </style>
 </head>
+
 <body>
 
 <div class="card">
-  <h2>Accept invitation</h2>
-  <input type="password" id="password" placeholder="Create password" />
-  <button onclick="submitForm()">Accept invite</button>
+
+  <div class="logo">Easy Business</div>
+
+  <!-- Language Switch -->
+  <div class="lang-switch">
+    <button onclick="setLang('ru')" id="btn-ru" class="active">RU</button>
+    <button onclick="setLang('en')" id="btn-en">EN</button>
+    <button onclick="setLang('tr')" id="btn-tr">TR</button>
+  </div>
+
+  <h2 id="title">Подтверждение регистрации</h2>
+
+  <p id="desc">
+    Вы были добавлены в систему Easy Business на роль администратора.<br>
+    Для продолжения придумайте пароль и введите его ниже.
+  </p>
+
+  <!-- Password -->
+  <div class="field">
+    <label id="passLabel">Пароль</label>
+    <div class="input-wrap">
+      <input type="password" id="password" placeholder="Введите пароль" />
+      <span class="toggle" onclick="togglePassword('password')">👁</span>
+    </div>
+    <div class="hint" id="passHint">
+      Минимум 8 символов: латиница, цифры и спецсимволы.
+    </div>
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="field">
+    <label id="confirmLabel">Повторите пароль</label>
+    <div class="input-wrap">
+      <input type="password" id="confirmPassword" placeholder="Повторите пароль" />
+      <span class="toggle" onclick="togglePassword('confirmPassword')">👁</span>
+    </div>
+  </div>
+
   <div id="result"></div>
+
+  <button class="main" onclick="submitForm()" id="saveBtn">
+    Сохранить пароль
+  </button>
+
 </div>
 
 <script>
-  const token = new URLSearchParams(window.location.search).get('token');
+  const token = new URLSearchParams(window.location.search).get("token");
+
+  // ---------- Translations ----------
+  const texts = {
+    ru: {
+      title: "Подтверждение регистрации",
+      desc: "Вы были добавлены в систему Easy Business на роль администратора.<br>Для продолжения придумайте пароль и введите его ниже.",
+      passLabel: "Пароль",
+      confirmLabel: "Повторите пароль",
+      passHint: "Минимум 8 символов: латиница, цифры и спецсимволы.",
+      saveBtn: "Сохранить пароль",
+      mismatch: "Пароли должны совпадать",
+      invalid: "Пароль должен быть не менее 8 символов и содержать только латиницу, цифры и спецсимволы.",
+      welcome: "Добро пожаловать в систему Easy Business!<br><br>Используйте ваш email как логин и пароль, который вы только что установили.",
+      error: "Ошибка: "
+    },
+    en: {
+      title: "Confirm registration",
+      desc: "You have been added to Easy Business as an administrator.<br>Please create a password to continue.",
+      passLabel: "Password",
+      confirmLabel: "Repeat password",
+      passHint: "Minimum 8 characters: Latin letters, numbers and symbols.",
+      saveBtn: "Save password",
+      mismatch: "Passwords must match",
+      invalid: "Password must be at least 8 characters and contain only Latin letters, numbers and symbols.",
+      welcome: "Welcome to Easy Business!<br><br>Use your email as login and the password you just created.",
+      error: "Error: "
+    },
+    tr: {
+      title: "Kayıt Onayı",
+      desc: "Easy Business sistemine yönetici olarak eklendiniz.<br>Devam etmek için bir şifre oluşturun.",
+      passLabel: "Şifre",
+      confirmLabel: "Şifreyi tekrar girin",
+      passHint: "En az 8 karakter: Latin harfleri, rakamlar ve semboller.",
+      saveBtn: "Şifreyi Kaydet",
+      mismatch: "Şifreler aynı olmalıdır",
+      invalid: "Şifre en az 8 karakter olmalı ve yalnızca Latin harfleri, rakamlar ve semboller içermelidir.",
+      welcome: "Easy Business'e hoş geldiniz!<br><br>Email adresinizi giriş olarak ve yeni şifrenizi kullanabilirsiniz.",
+      error: "Hata: "
+    }
+  };
+
+  let currentLang = "ru";
+
+  function setLang(lang) {
+    currentLang = lang;
+
+    document.getElementById("btn-ru").classList.remove("active");
+    document.getElementById("btn-en").classList.remove("active");
+    document.getElementById("btn-tr").classList.remove("active");
+    document.getElementById("btn-" + lang).classList.add("active");
+
+    document.getElementById("title").innerHTML = texts[lang].title;
+    document.getElementById("desc").innerHTML = texts[lang].desc;
+    document.getElementById("passLabel").innerHTML = texts[lang].passLabel;
+    document.getElementById("confirmLabel").innerHTML = texts[lang].confirmLabel;
+    document.getElementById("passHint").innerHTML = texts[lang].passHint;
+    document.getElementById("saveBtn").innerHTML = texts[lang].saveBtn;
+  }
+
+  function togglePassword(id) {
+    const input = document.getElementById(id);
+    input.type = input.type === "password" ? "text" : "password";
+  }
+
+  function validatePassword(password) {
+    // латиница + цифры + спецсимволы, минимум 8
+    const regex = /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/;
+    return regex.test(password);
+  }
 
   async function submitForm() {
-    const password = document.getElementById('password').value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const resultDiv = document.getElementById("result");
 
+    resultDiv.innerHTML = "";
+
+    if (!validatePassword(password)) {
+      resultDiv.innerHTML = `<div class="error">${texts[currentLang].invalid}</div>`;
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      resultDiv.innerHTML = `<div class="error">${texts[currentLang].mismatch}</div>`;
+      return;
+    }
+
+    // Request
     const res = await fetch(
-      'https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite',
+      "https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite",
       {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          token,
-          password,
-        }),
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, password })
       }
     );
 
     const data = await res.json();
-    console.log(data);
 
     if (!res.ok) {
-      alert(data.error || 'Ошибка');
+      resultDiv.innerHTML =
+        `<div class="error">${texts[currentLang].error}${data.error || "Unknown"}</div>`;
     } else {
-      alert('Аккаунт создан, можно входить');
+      // Success screen
+      resultDiv.innerHTML =
+        `<div class="success">${texts[currentLang].welcome}</div>`;
+
+      document.getElementById("saveBtn").disabled = true;
     }
   }
 </script>
-
-
 
 </body>
 </html>
