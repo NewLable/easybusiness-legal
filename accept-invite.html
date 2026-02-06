@@ -2,388 +2,543 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Приглашение администратора • Easy Business</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <title>Подтверждение регистрации • Easy Business</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+    :root {
+      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --accent-color: #fbbf24;
+      --success-color: #10b981;
+      --error-color: #ef4444;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --bg-card: #ffffff;
+      --bg-input: #f3f4f6;
+      --radius: 16px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-card: #1f2937;
+        --bg-input: #374151;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+      }
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      font-family: "Segoe UI", system-ui, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--primary-gradient);
+      background-attachment: fixed;
       min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      padding: 24px;
+      justify-content: center;
+      padding: 16px;
+      color: var(--text-primary);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 30L15 0H45L30 30Z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+      z-index: -1;
     }
 
     .container {
       width: 100%;
-      max-width: 900px;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
     .logo {
       text-align: center;
-      margin-bottom: 28px;
-      color: white;
-      font-size: 34px;
+      font-size: 28px;
       font-weight: 800;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
-    .logo span {
-      color: #fbbf24;
-    }
+    .logo span { color: var(--accent-color); }
 
     .card {
-      background: white;
-      border-radius: 28px;
-      padding: 55px;
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.18);
-      animation: slideUp 0.5s ease-out;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(35px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      width: 100%;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 24px;
     }
 
     .header h1 {
-      font-size: 34px;
-      font-weight: 800;
-      margin-bottom: 14px;
-      color: #1f2937;
+      font-size: 24px;
+      margin-bottom: 12px;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .header p {
-      font-size: 18px;
-      color: #6b7280;
-      line-height: 1.6;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.5;
     }
 
     .input-group {
       position: relative;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .input-icon {
       position: absolute;
-      left: 18px;
+      left: 16px;
       top: 50%;
       transform: translateY(-50%);
-      color: #9ca3af;
-      font-size: 20px;
+      color: var(--text-secondary);
+      font-size: 18px;
     }
 
     .input-field {
       width: 100%;
-      padding: 20px 56px;
-      border: 2px solid #e5e7eb;
-      border-radius: 16px;
-      font-size: 17px;
-      background: #f9fafb;
-      transition: 0.25s;
+      height: 56px;
+      padding: 0 52px;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      background: var(--bg-input);
+      color: var(--text-primary);
+      font-size: 16px;
+      transition: all 0.2s ease;
     }
 
     .input-field:focus {
       outline: none;
       border-color: #667eea;
-      background: white;
-      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+      background: var(--bg-card);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
     }
 
     .toggle-password {
       position: absolute;
-      right: 18px;
+      right: 8px;
       top: 50%;
       transform: translateY(-50%);
-      border: none;
       background: none;
+      border: none;
+      color: var(--text-secondary);
+      width: 40px;
+      height: 40px;
       cursor: pointer;
-      color: #9ca3af;
-      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .toggle-password:hover {
-      color: #667eea;
+    .password-strength {
+      margin-bottom: 20px;
     }
 
-    .requirements {
-      background: #f0f9ff;
-      border: 1px solid #dbeafe;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 28px;
+    .strength-text {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
     }
 
-    .requirements h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: #1e40af;
+    .strength-bar {
+      height: 6px;
+      background: var(--bg-input);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      width: 0;
+      transition: all 0.4s ease;
+    }
+
+    .password-requirements {
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .password-requirements h4 {
+      font-size: 14px;
       margin-bottom: 10px;
       display: flex;
+      align-items: center;
       gap: 8px;
-      align-items: center;
     }
 
-    .requirements ul {
+    .requirements-list {
       list-style: none;
-      font-size: 14px;
-      color: #4b5563;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
 
-    .requirements li {
-      margin-bottom: 6px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .requirements i {
+    .requirements-list li {
       font-size: 13px;
-      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
     }
 
-    .met i {
-      color: #10b981;
+    .requirement-met {
+      color: var(--success-color) !important;
     }
 
     .button {
       width: 100%;
-      padding: 20px;
+      height: 56px;
+      background: var(--primary-gradient);
+      color: white;
       border: none;
-      border-radius: 16px;
-      font-size: 18px;
+      border-radius: 12px;
+      font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
-      transition: 0.25s;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(102, 126, 234, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     }
 
     .button:disabled {
-      opacity: 0.6;
+      opacity: 0.5;
       cursor: not-allowed;
-      transform: none;
+      box-shadow: none;
     }
+
+    .language-selector {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 100;
+    }
+
+    .language-btn {
+      background: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 50px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+      color: #4b5563;
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: none;
+      min-width: 140px;
+      overflow: hidden;
+    }
+
+    .language-dropdown.show { display: block; animation: fadeIn 0.2s ease; }
+
+    .language-option {
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .language-option:hover { background: var(--bg-input); }
 
     .result-message {
-      margin-top: 26px;
-      padding: 18px;
-      border-radius: 14px;
-      font-weight: 600;
-      text-align: center;
-      font-size: 16px;
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .error { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+    .success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
     }
 
-    .error {
-      background: #fee2e2;
-      border: 1px solid #fca5a5;
-      color: #dc2626;
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .success {
-      background: #d1fae5;
-      border: 1px solid #a7f3d0;
-      color: #059669;
-    }
-
-    @media (max-width: 640px) {
-      .card {
-        padding: 32px 22px;
-      }
-
-      .header h1 {
-        font-size: 26px;
-      }
+    @media (min-width: 640px) {
+      .card { padding: 40px; }
+      .requirements-list { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 
 <body>
+  <div class="language-selector">
+    <button class="language-btn" id="languageToggle">
+      <i class="fas fa-globe"></i>
+      <span id="currentLanguage">Русский</span>
+      <i class="fas fa-chevron-down" style="font-size: 12px;"></i>
+    </button>
+    <div class="language-dropdown" id="languageDropdown">
+      <div class="language-option" data-lang="ru">Русский</div>
+      <div class="language-option" data-lang="en">English</div>
+      <div class="language-option" data-lang="tr">Türkçe</div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="logo">Easy<span>Business</span></div>
-
+    
     <div class="card">
       <div class="header">
-        <h1>Приглашение администратора</h1>
-        <p>
-          Вы были добавлены в систему <b>Easy Business</b> в роли администратора.<br>
-          Чтобы продолжить, придумайте пароль для входа.
-        </p>
+        <h1 id="title">Подтверждение регистрации</h1>
+        <p id="description">Вы были добавлены в систему. Придумайте пароль для входа.</p>
       </div>
 
-      <!-- Password -->
       <div class="input-group">
         <i class="fas fa-lock input-icon"></i>
-        <input type="password" id="password" class="input-field"
-          placeholder="Новый пароль">
-        <button class="toggle-password" data-target="password">
+        <input type="password" id="password" class="input-field" placeholder="Придумайте пароль">
+        <button type="button" class="toggle-password" data-target="password">
           <i class="fas fa-eye"></i>
         </button>
       </div>
 
-      <!-- Confirm -->
       <div class="input-group">
         <i class="fas fa-lock input-icon"></i>
-        <input type="password" id="confirmPassword" class="input-field"
-          placeholder="Повторите пароль">
-        <button class="toggle-password" data-target="confirmPassword">
+        <input type="password" id="confirmPassword" class="input-field" placeholder="Повторите пароль">
+        <button type="button" class="toggle-password" data-target="confirmPassword">
           <i class="fas fa-eye"></i>
         </button>
       </div>
 
-      <!-- Requirements -->
-      <div class="requirements">
-        <h4><i class="fas fa-shield-alt"></i> Требования к паролю</h4>
-        <ul>
-          <li id="req-length"><i class="fas fa-circle"></i> минимум 8 символов</li>
-          <li id="req-number"><i class="fas fa-circle"></i> хотя бы одна цифра</li>
-          <li id="req-special"><i class="fas fa-circle"></i> хотя бы один спецсимвол</li>
+      <div class="password-strength">
+        <span class="strength-text" id="strengthText">Сложность: <span>...</span></span>
+        <div class="strength-bar">
+          <div class="strength-fill" id="strengthFill"></div>
+        </div>
+      </div>
+
+      <div class="password-requirements">
+        <h4 id="reqTitle"><i class="fas fa-shield-alt"></i> Требования</h4>
+        <ul class="requirements-list">
+          <li id="req-length"><i class="fas fa-circle requirement-icon"></i> <span>8+ символов</span></li>
+          <li id="req-latin"><i class="fas fa-circle requirement-icon"></i> <span>Латиница</span></li>
+          <li id="req-number"><i class="fas fa-circle requirement-icon"></i> <span>Цифры</span></li>
+          <li id="req-special"><i class="fas fa-circle requirement-icon"></i> <span>Спецсимволы</span></li>
         </ul>
       </div>
 
       <button id="submitBtn" class="button">
-        Сохранить пароль и войти
+        <span id="buttonText">Завершить регистрацию</span>
+        <div class="spinner" id="spinner" style="display: none;"></div>
       </button>
 
       <div id="resultMessage"></div>
     </div>
   </div>
 
-<script>
-  const token = new URLSearchParams(window.location.search).get("token");
-
-  const passwordInput = document.getElementById("password");
-  const confirmInput = document.getElementById("confirmPassword");
-  const submitBtn = document.getElementById("submitBtn");
-  const resultMessage = document.getElementById("resultMessage");
-
-  function showError(msg) {
-    resultMessage.innerHTML =
-      `<div class="result-message error">${msg}</div>`;
-  }
-
-  function showSuccess(msg) {
-    resultMessage.innerHTML =
-      `<div class="result-message success">${msg}</div>`;
-  }
-
-  // 👁 Toggle password visibility
-  document.querySelectorAll(".toggle-password").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const input = document.getElementById(btn.dataset.target);
-      const icon = btn.querySelector("i");
-
-      if (input.type === "password") {
-        input.type = "text";
-        icon.className = "fas fa-eye-slash";
-      } else {
-        input.type = "password";
-        icon.className = "fas fa-eye";
+  <script>
+    const texts = {
+      ru: {
+        title: "Подтверждение регистрации",
+        description: "Вы были добавлены в систему Easy Business на роль администратора.<br>Для продолжения придумайте пароль и введите его ниже.",
+        passwordPlaceholder: "Новый пароль",
+        confirmPlaceholder: "Подтвердите пароль",
+        buttonText: "Завершить регистрацию",
+        strengthText: "Сложность: ",
+        strengthLevels: ["очень слабый", "слабый", "средний", "сильный", "очень сильный"],
+        welcome: "<strong>Добро пожаловать в Easy Business!</strong><br><br>Аккаунт подтвержден. Теперь вы можете войти, используя свой email и созданный пароль.",
+        errorToken: "🚫 Ошибка: ссылка недействительна или истекла.",
+        errorMatch: "🔒 Пароли не совпадают",
+        reqTitle: "Требования к паролю",
+        reqLength: "8+ символов", reqLatin: "Латиница", reqNumber: "Цифры", reqSpecial: "Спецсимволы"
+      },
+      en: {
+        title: "Complete Registration",
+        description: "You have been added to Easy Business as an administrator.<br>Create a password below to continue.",
+        passwordPlaceholder: "New password",
+        confirmPlaceholder: "Confirm password",
+        buttonText: "Complete Registration",
+        strengthText: "Strength: ",
+        strengthLevels: ["very weak", "weak", "medium", "strong", "very strong"],
+        welcome: "<strong>Welcome to Easy Business!</strong><br><br>Account confirmed. You can now log in using your email and the password you just created.",
+        errorToken: "🚫 Error: invite link is invalid or expired.",
+        errorMatch: "🔒 Passwords do not match",
+        reqTitle: "Password Requirements",
+        reqLength: "8+ characters", reqLatin: "Latin letters", reqNumber: "Numbers", reqSpecial: "Special symbols"
+      },
+      tr: {
+        title: "Kayıt Onayı",
+        description: "Easy Business sistemine yönetici olarak eklendiniz.<br>Devam etmek için lütfen bir şifre belirleyin.",
+        passwordPlaceholder: "Yeni şifre",
+        confirmPlaceholder: "Şifreyi onayla",
+        buttonText: "Kaydı Tamamla",
+        strengthText: "Güç: ",
+        strengthLevels: ["çok zayıf", "zayıf", "orta", "güçlü", "çok güçlü"],
+        welcome: "<strong>Easy Business'a Hoş Geldiniz!</strong><br><br>Hesabınız onaylandı. Artık e-posta adresiniz ve oluşturduğunuz şifre ile giriş yapabilirsiniz.",
+        errorToken: "🚫 Hata: davet bağlantısı geçersiz veya süresi dolmuş.",
+        errorMatch: "🔒 Şifreler eşleşmiyor",
+        reqTitle: "Şifre Gereksinimleri",
+        reqLength: "8+ karakter", reqLatin: "Latin harf", reqNumber: "Rakam", reqSpecial: "Özel karakter"
       }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    let currentLang = 'ru';
+
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirmPassword');
+    const submitBtn = document.getElementById('submitBtn');
+    const buttonText = document.getElementById('buttonText');
+    const spinner = document.getElementById('spinner');
+    const resultMessage = document.getElementById('resultMessage');
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthText = document.getElementById('strengthText');
+
+    document.getElementById('languageToggle').onclick = (e) => {
+      e.stopPropagation();
+      document.getElementById('languageDropdown').classList.toggle('show');
+    };
+
+    document.querySelectorAll('.language-option').forEach(opt => {
+      opt.onclick = () => {
+        currentLang = opt.dataset.lang;
+        updateLanguage();
+        document.getElementById('languageDropdown').classList.remove('show');
+      };
     });
-  });
 
-  function validatePassword() {
-    const password = passwordInput.value;
-
-    const lengthOk = password.length >= 8;
-    const numberOk = /\d/.test(password);
-    const specialOk = /[!@#$%^&*()_\-+=<>?{}[\]|.,:;]/.test(password);
-
-    updateReq("req-length", lengthOk);
-    updateReq("req-number", numberOk);
-    updateReq("req-special", specialOk);
-
-    return lengthOk && numberOk && specialOk;
-  }
-
-  function updateReq(id, ok) {
-    const el = document.getElementById(id);
-    if (ok) {
-      el.classList.add("met");
-      el.querySelector("i").className = "fas fa-check-circle";
-    } else {
-      el.classList.remove("met");
-      el.querySelector("i").className = "fas fa-circle";
-    }
-  }
-
-  async function acceptInvite() {
-    const password = passwordInput.value;
-    const confirm = confirmInput.value;
-
-    if (!validatePassword()) {
-      return showError("Пароль слишком слабый.");
+    function updateLanguage() {
+      const t = texts[currentLang];
+      document.getElementById('title').innerHTML = t.title;
+      document.getElementById('description').innerHTML = t.description;
+      passwordInput.placeholder = t.passwordPlaceholder;
+      confirmInput.placeholder = t.confirmPlaceholder;
+      buttonText.innerText = t.buttonText;
+      document.getElementById('currentLanguage').innerText = currentLang === 'ru' ? 'Русский' : currentLang === 'en' ? 'English' : 'Türkçe';
+      document.getElementById('reqTitle').innerHTML = `<i class="fas fa-shield-alt"></i> ${t.reqTitle}`;
+      document.getElementById('req-length').querySelector('span').innerText = t.reqLength;
+      document.getElementById('req-latin').querySelector('span').innerText = t.reqLatin;
+      document.getElementById('req-number').querySelector('span').innerText = t.reqNumber;
+      document.getElementById('req-special').querySelector('span').innerText = t.reqSpecial;
+      updatePasswordStrength();
     }
 
-    if (password !== confirm) {
-      return showError("Пароли должны совпадать.");
-    }
+    document.querySelectorAll('.toggle-password').forEach(btn => {
+      btn.onclick = () => {
+        const input = document.getElementById(btn.dataset.target);
+        input.type = input.type === 'password' ? 'text' : 'password';
+        btn.innerHTML = `<i class="fas fa-${input.type === 'password' ? 'eye' : 'eye-slash'}"></i>`;
+      };
+    });
 
-    submitBtn.disabled = true;
+    passwordInput.oninput = () => {
+      const val = passwordInput.value;
+      const checks = {
+        length: val.length >= 8,
+        latin: /[a-zA-Z]/.test(val),
+        number: /[0-9]/.test(val),
+        special: /[^A-Za-z0-9]/.test(val)
+      };
 
-    try {
-      const res = await fetch(
-        "https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-
-            "apikey":
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZXdsdmxiYml5d2pmam9hd2V3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyODY1ODIsImV4cCI6MjA3Mzg2MjU4Mn0.bP7xwohBa5JOLT4_cQYz-nhprr6m6a43NUt-HcPCq8c"
-          },
-          body: JSON.stringify({ token, password }),
+      let score = 0;
+      Object.keys(checks).forEach(key => {
+        const el = document.getElementById(`req-${key}`);
+        if (checks[key]) {
+          el.classList.add('requirement-met');
+          el.querySelector('i').className = 'fas fa-check-circle requirement-icon';
+          score++;
+        } else {
+          el.classList.remove('requirement-met');
+          el.querySelector('i').className = 'fas fa-circle requirement-icon';
         }
-      );
+      });
 
-      const data = await res.json();
+      const strength = (score / 4) * 100;
+      strengthFill.style.width = strength + '%';
+      strengthFill.style.background = strength < 50 ? '#ef4444' : strength < 100 ? '#fbbf24' : '#10b981';
+      const level = Math.floor((score / 4) * (texts[currentLang].strengthLevels.length - 1));
+      strengthText.innerHTML = `${texts[currentLang].strengthText} <span style="color:${strengthFill.style.background}">${texts[currentLang].strengthLevels[level]}</span>`;
+      
+      submitBtn.disabled = !(score === 4 && val === confirmInput.value);
+    };
 
-      if (!res.ok) throw new Error(data.error);
+    confirmInput.oninput = passwordInput.oninput;
 
-      showSuccess(
-        "Добро пожаловать в Easy Business 🎉<br><br>" +
-        "Ваш аккаунт администратора активирован.<br>" +
-        "Теперь вы можете войти, используя email и новый пароль."
-      );
+    submitBtn.onclick = async () => {
+      if (!token) {
+        resultMessage.className = 'result-message error';
+        resultMessage.innerText = texts[currentLang].errorToken;
+        return;
+      }
 
-      submitBtn.style.display = "none";
+      buttonText.style.display = 'none';
+      spinner.style.display = 'block';
+      submitBtn.disabled = true;
 
-    } catch (e) {
-      showError(e.message || "Ошибка сети");
-      submitBtn.disabled = false;
-    }
-  }
+      try {
+        const res = await fetch('https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, password: passwordInput.value })
+        });
 
-  submitBtn.addEventListener("click", acceptInvite);
+        const data = await res.json();
 
-  passwordInput.addEventListener("input", validatePassword);
-</script>
+        if (res.ok) {
+          resultMessage.className = 'result-message success';
+          resultMessage.innerHTML = texts[currentLang].welcome;
+          submitBtn.style.display = 'none';
+          document.querySelector('.input-group').parentElement.querySelectorAll('.input-group, .password-strength, .password-requirements').forEach(el => el.style.display = 'none');
+        } else {
+          throw new Error(data.error || texts[currentLang].errorToken);
+        }
+      } catch (err) {
+        resultMessage.className = 'result-message error';
+        resultMessage.innerText = err.message;
+        buttonText.style.display = 'block';
+        spinner.style.display = 'none';
+        submitBtn.disabled = false;
+      }
+    };
+
+    window.onclick = () => document.getElementById('languageDropdown').classList.remove('show');
+    updateLanguage();
+  </script>
 </body>
 </html>
