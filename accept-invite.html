@@ -2,319 +2,388 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Easy Business — Invite</title>
+  <title>Приглашение администратора • Easy Business</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: linear-gradient(135deg, #f4f6fb, #eef2ff);
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 28px;
+      color: white;
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #fbbf24;
     }
 
     .card {
       background: white;
-      padding: 28px;
-      border-radius: 18px;
-      width: 100%;
-      max-width: 440px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      border-radius: 28px;
+      padding: 55px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.18);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
       text-align: center;
+      margin-bottom: 40px;
     }
 
-    .logo {
-      font-size: 22px;
+    .header h1 {
+      font-size: 34px;
       font-weight: 800;
-      color: #2563eb;
-      margin-bottom: 8px;
+      margin-bottom: 14px;
+      color: #1f2937;
     }
 
-    h2 {
-      margin: 10px 0;
-      font-size: 20px;
-      font-weight: 700;
-      color: #111827;
+    .header p {
+      font-size: 18px;
+      color: #6b7280;
+      line-height: 1.6;
     }
 
-    p {
-      font-size: 14px;
-      color: #4b5563;
-      line-height: 1.4;
-      margin-bottom: 18px;
-    }
-
-    .lang-switch {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .lang-switch button {
-      border: 1px solid #d1d5db;
-      background: #f9fafb;
-      padding: 6px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .lang-switch button.active {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }
-
-    .field {
-      text-align: left;
-      margin-top: 14px;
-    }
-
-    label {
-      font-size: 13px;
-      font-weight: 600;
-      color: #374151;
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .input-wrap {
+    .input-group {
       position: relative;
+      margin-bottom: 24px;
     }
 
-    input {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 12px 42px 12px 12px;
-      font-size: 15px;
-      border-radius: 12px;
-      border: 1px solid #d1d5db;
-      outline: none;
-      transition: 0.2s;
-    }
-
-    input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
-    }
-
-    .toggle {
+    .input-icon {
       position: absolute;
-      right: 10px;
+      left: 18px;
       top: 50%;
       transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 16px;
-      color: #6b7280;
+      color: #9ca3af;
+      font-size: 20px;
     }
 
-    .hint {
-      font-size: 12px;
-      color: #6b7280;
-      margin-top: 6px;
+    .input-field {
+      width: 100%;
+      padding: 20px 56px;
+      border: 2px solid #e5e7eb;
+      border-radius: 16px;
+      font-size: 17px;
+      background: #f9fafb;
+      transition: 0.25s;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #9ca3af;
+      font-size: 18px;
+    }
+
+    .toggle-password:hover {
+      color: #667eea;
+    }
+
+    .requirements {
+      background: #f0f9ff;
+      border: 1px solid #dbeafe;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .requirements h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .requirements ul {
+      list-style: none;
+      font-size: 14px;
+      color: #4b5563;
+    }
+
+    .requirements li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .requirements i {
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .met i {
+      color: #10b981;
+    }
+
+    .button {
+      width: 100%;
+      padding: 20px;
+      border: none;
+      border-radius: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+      transition: 0.25s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(102, 126, 234, 0.45);
+    }
+
+    .button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .result-message {
+      margin-top: 26px;
+      padding: 18px;
+      border-radius: 14px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 16px;
     }
 
     .error {
-      font-size: 13px;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
       color: #dc2626;
-      margin-top: 10px;
-      font-weight: 600;
     }
 
     .success {
-      font-size: 15px;
-      color: #16a34a;
-      font-weight: 700;
-      margin-top: 18px;
+      background: #d1fae5;
+      border: 1px solid #a7f3d0;
+      color: #059669;
     }
 
-    button.main {
-      width: 100%;
-      margin-top: 18px;
-      padding: 13px;
-      font-size: 15px;
-      font-weight: 700;
-      border: none;
-      border-radius: 14px;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+    @media (max-width: 640px) {
+      .card {
+        padding: 32px 22px;
+      }
 
-    button.main:hover {
-      background: #1e40af;
+      .header h1 {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="container">
+    <div class="logo">Easy<span>Business</span></div>
 
-<div class="card">
+    <div class="card">
+      <div class="header">
+        <h1>Приглашение администратора</h1>
+        <p>
+          Вы были добавлены в систему <b>Easy Business</b> в роли администратора.<br>
+          Чтобы продолжить, придумайте пароль для входа.
+        </p>
+      </div>
 
-  <div class="logo">Easy Business</div>
+      <!-- Password -->
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" id="password" class="input-field"
+          placeholder="Новый пароль">
+        <button class="toggle-password" data-target="password">
+          <i class="fas fa-eye"></i>
+        </button>
+      </div>
 
-  <!-- Language Switch -->
-  <div class="lang-switch">
-    <button onclick="setLang('ru')" id="btn-ru" class="active">RU</button>
-    <button onclick="setLang('en')" id="btn-en">EN</button>
-    <button onclick="setLang('tr')" id="btn-tr">TR</button>
-  </div>
+      <!-- Confirm -->
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" id="confirmPassword" class="input-field"
+          placeholder="Повторите пароль">
+        <button class="toggle-password" data-target="confirmPassword">
+          <i class="fas fa-eye"></i>
+        </button>
+      </div>
 
-  <h2 id="title">Подтверждение регистрации</h2>
+      <!-- Requirements -->
+      <div class="requirements">
+        <h4><i class="fas fa-shield-alt"></i> Требования к паролю</h4>
+        <ul>
+          <li id="req-length"><i class="fas fa-circle"></i> минимум 8 символов</li>
+          <li id="req-number"><i class="fas fa-circle"></i> хотя бы одна цифра</li>
+          <li id="req-special"><i class="fas fa-circle"></i> хотя бы один спецсимвол</li>
+        </ul>
+      </div>
 
-  <p id="desc">
-    Вы были добавлены в систему Easy Business на роль администратора.<br>
-    Для продолжения придумайте пароль и введите его ниже.
-  </p>
+      <button id="submitBtn" class="button">
+        Сохранить пароль и войти
+      </button>
 
-  <!-- Password -->
-  <div class="field">
-    <label id="passLabel">Пароль</label>
-    <div class="input-wrap">
-      <input type="password" id="password" placeholder="Введите пароль" />
-      <span class="toggle" onclick="togglePassword('password')">👁</span>
+      <div id="resultMessage"></div>
     </div>
-    <div class="hint" id="passHint">
-      Минимум 8 символов: латиница, цифры и спецсимволы.
-    </div>
   </div>
-
-  <!-- Confirm Password -->
-  <div class="field">
-    <label id="confirmLabel">Повторите пароль</label>
-    <div class="input-wrap">
-      <input type="password" id="confirmPassword" placeholder="Повторите пароль" />
-      <span class="toggle" onclick="togglePassword('confirmPassword')">👁</span>
-    </div>
-  </div>
-
-  <div id="result"></div>
-
-  <button class="main" onclick="submitForm()" id="saveBtn">
-    Сохранить пароль
-  </button>
-
-</div>
 
 <script>
   const token = new URLSearchParams(window.location.search).get("token");
 
-  // ---------- Translations ----------
-  const texts = {
-    ru: {
-      title: "Подтверждение регистрации",
-      desc: "Вы были добавлены в систему Easy Business на роль администратора.<br>Для продолжения придумайте пароль и введите его ниже.",
-      passLabel: "Пароль",
-      confirmLabel: "Повторите пароль",
-      passHint: "Минимум 8 символов: латиница, цифры и спецсимволы.",
-      saveBtn: "Сохранить пароль",
-      mismatch: "Пароли должны совпадать",
-      invalid: "Пароль должен быть не менее 8 символов и содержать только латиницу, цифры и спецсимволы.",
-      welcome: "Добро пожаловать в систему Easy Business!<br><br>Используйте ваш email как логин и пароль, который вы только что установили.",
-      error: "Ошибка: "
-    },
-    en: {
-      title: "Confirm registration",
-      desc: "You have been added to Easy Business as an administrator.<br>Please create a password to continue.",
-      passLabel: "Password",
-      confirmLabel: "Repeat password",
-      passHint: "Minimum 8 characters: Latin letters, numbers and symbols.",
-      saveBtn: "Save password",
-      mismatch: "Passwords must match",
-      invalid: "Password must be at least 8 characters and contain only Latin letters, numbers and symbols.",
-      welcome: "Welcome to Easy Business!<br><br>Use your email as login and the password you just created.",
-      error: "Error: "
-    },
-    tr: {
-      title: "Kayıt Onayı",
-      desc: "Easy Business sistemine yönetici olarak eklendiniz.<br>Devam etmek için bir şifre oluşturun.",
-      passLabel: "Şifre",
-      confirmLabel: "Şifreyi tekrar girin",
-      passHint: "En az 8 karakter: Latin harfleri, rakamlar ve semboller.",
-      saveBtn: "Şifreyi Kaydet",
-      mismatch: "Şifreler aynı olmalıdır",
-      invalid: "Şifre en az 8 karakter olmalı ve yalnızca Latin harfleri, rakamlar ve semboller içermelidir.",
-      welcome: "Easy Business'e hoş geldiniz!<br><br>Email adresinizi giriş olarak ve yeni şifrenizi kullanabilirsiniz.",
-      error: "Hata: "
-    }
-  };
+  const passwordInput = document.getElementById("password");
+  const confirmInput = document.getElementById("confirmPassword");
+  const submitBtn = document.getElementById("submitBtn");
+  const resultMessage = document.getElementById("resultMessage");
 
-  let currentLang = "ru";
-
-  function setLang(lang) {
-    currentLang = lang;
-
-    document.getElementById("btn-ru").classList.remove("active");
-    document.getElementById("btn-en").classList.remove("active");
-    document.getElementById("btn-tr").classList.remove("active");
-    document.getElementById("btn-" + lang).classList.add("active");
-
-    document.getElementById("title").innerHTML = texts[lang].title;
-    document.getElementById("desc").innerHTML = texts[lang].desc;
-    document.getElementById("passLabel").innerHTML = texts[lang].passLabel;
-    document.getElementById("confirmLabel").innerHTML = texts[lang].confirmLabel;
-    document.getElementById("passHint").innerHTML = texts[lang].passHint;
-    document.getElementById("saveBtn").innerHTML = texts[lang].saveBtn;
+  function showError(msg) {
+    resultMessage.innerHTML =
+      `<div class="result-message error">${msg}</div>`;
   }
 
-  function togglePassword(id) {
-    const input = document.getElementById(id);
-    input.type = input.type === "password" ? "text" : "password";
+  function showSuccess(msg) {
+    resultMessage.innerHTML =
+      `<div class="result-message success">${msg}</div>`;
   }
 
-  function validatePassword(password) {
-    // латиница + цифры + спецсимволы, минимум 8
-    const regex = /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/;
-    return regex.test(password);
-  }
+  // 👁 Toggle password visibility
+  document.querySelectorAll(".toggle-password").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const input = document.getElementById(btn.dataset.target);
+      const icon = btn.querySelector("i");
 
-  async function submitForm() {
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
-    const resultDiv = document.getElementById("result");
-
-    resultDiv.innerHTML = "";
-
-    if (!validatePassword(password)) {
-      resultDiv.innerHTML = `<div class="error">${texts[currentLang].invalid}</div>`;
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      resultDiv.innerHTML = `<div class="error">${texts[currentLang].mismatch}</div>`;
-      return;
-    }
-
-    // Request
-    const res = await fetch(
-      "https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, password })
+      if (input.type === "password") {
+        input.type = "text";
+        icon.className = "fas fa-eye-slash";
+      } else {
+        input.type = "password";
+        icon.className = "fas fa-eye";
       }
-    );
+    });
+  });
 
-    const data = await res.json();
+  function validatePassword() {
+    const password = passwordInput.value;
 
-    if (!res.ok) {
-      resultDiv.innerHTML =
-        `<div class="error">${texts[currentLang].error}${data.error || "Unknown"}</div>`;
+    const lengthOk = password.length >= 8;
+    const numberOk = /\d/.test(password);
+    const specialOk = /[!@#$%^&*()_\-+=<>?{}[\]|.,:;]/.test(password);
+
+    updateReq("req-length", lengthOk);
+    updateReq("req-number", numberOk);
+    updateReq("req-special", specialOk);
+
+    return lengthOk && numberOk && specialOk;
+  }
+
+  function updateReq(id, ok) {
+    const el = document.getElementById(id);
+    if (ok) {
+      el.classList.add("met");
+      el.querySelector("i").className = "fas fa-check-circle";
     } else {
-      // Success screen
-      resultDiv.innerHTML =
-        `<div class="success">${texts[currentLang].welcome}</div>`;
-
-      document.getElementById("saveBtn").disabled = true;
+      el.classList.remove("met");
+      el.querySelector("i").className = "fas fa-circle";
     }
   }
-</script>
 
+  async function acceptInvite() {
+    const password = passwordInput.value;
+    const confirm = confirmInput.value;
+
+    if (!validatePassword()) {
+      return showError("Пароль слишком слабый.");
+    }
+
+    if (password !== confirm) {
+      return showError("Пароли должны совпадать.");
+    }
+
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch(
+        "https://peewlvlbbiywjfjoawew.supabase.co/functions/v1/accept_invite",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+
+            "apikey":
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZXdsdmxiYml5d2pmam9hd2V3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgyODY1ODIsImV4cCI6MjA3Mzg2MjU4Mn0.bP7xwohBa5JOLT4_cQYz-nhprr6m6a43NUt-HcPCq8c"
+          },
+          body: JSON.stringify({ token, password }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      showSuccess(
+        "Добро пожаловать в Easy Business 🎉<br><br>" +
+        "Ваш аккаунт администратора активирован.<br>" +
+        "Теперь вы можете войти, используя email и новый пароль."
+      );
+
+      submitBtn.style.display = "none";
+
+    } catch (e) {
+      showError(e.message || "Ошибка сети");
+      submitBtn.disabled = false;
+    }
+  }
+
+  submitBtn.addEventListener("click", acceptInvite);
+
+  passwordInput.addEventListener("input", validatePassword);
+</script>
 </body>
 </html>
