@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Easy Business Space — Документация</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <div class="layout">
 
-<div class="layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h1>Easy Business</h1>
+      <p class="subtitle">Руководство пользователя</p>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h2>Easy Business Space</h2>
-    <p class="subtitle">Документация владельца</p>
+      <nav>
+        <a href="#" data-page="intro.html" class="active">Введение</a>
+        <a href="#" data-page="shop-settings.html">Управление магазином ⭐</a>
+        <a href="#" data-page="shift-report.html">Отчёт смены ⭐</a>
+        <a href="#" data-page="metrics.html">Метрики ⭐</a>
+        <a href="#" data-page="formulas.html">Формулы ⭐</a>
+        <a href="#" data-page="suppliers.html">Поставщики и поставки</a>
+        <a href="#" data-page="cash.html">Касса и расхождения</a>
+        <a href="#" data-page="offline.html">Офлайн режим</a>
+        <a href="#" data-page="faq.html">FAQ</a>
+      </nav>
 
-    <nav>
-      <a href="pages/overview.html" target="content">Общее описание</a>
+      <div class="footer">
+        Easy Business Space Docs<br>
+        Версия: 1.0
+      </div>
+    </aside>
 
-      <h3>Главное</h3>
-      <a href="pages/shop-settings.html" target="content">Управление магазином</a>
-      <a href="pages/shift-report.html" target="content">Отчёт за смену</a>
-      <a href="pages/cost-price.html" target="content">Себестоимость и остаток</a>
+    <!-- CONTENT -->
+    <main class="content">
+      <iframe id="docFrame" src="pages/intro.html"></iframe>
+    </main>
 
-      <h3>Гибкая настройка</h3>
-      <a href="pages/metrics.html" target="content">Метрики</a>
-      <a href="pages/formulas.html" target="content">Формулы + примеры</a>
+  </div>
 
-      <h3>Учёт и контроль</h3>
-      <a href="pages/cash-control.html" target="content">Контроль кассы</a>
-      <a href="pages/suppliers.html" target="content">Поставщики и поставки</a>
-
-      <h3>Система</h3>
-      <a href="pages/offline.html" target="content">Офлайн-режим</a>
-      <a href="pages/faq.html" target="content">FAQ</a>
-    </nav>
-  </aside>
-
-  <!-- CONTENT -->
-  <main class="content">
-    <iframe src="pages/overview.html" name="content"></iframe>
-  </main>
-
-</div>
-
+  <script src="assets/app.js"></script>
 </body>
 </html>
