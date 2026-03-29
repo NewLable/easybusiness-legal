@@ -1,0 +1,17 @@
+{
+  "name": "Easy Business Space Docs",
+  "short_name": "Easy Business",
+  "description": "Документация Easy Business Space",
+  "start_url": "../index.html",
+  "display": "standalone",
+  "background_color": "#4a4cf1",
+  "theme_color": "#4a4cf1",
+  "icons": [
+    {
+      "src": "eb_logo.png",
+      "sizes": "474x474",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
