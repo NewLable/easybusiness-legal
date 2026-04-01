@@ -461,7 +461,29 @@ body.menu-open {
     left: 0;
     top: 0;
     width: min(88vw, 340px);
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(-100%);
+  }
+
+  .sidebar::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 42px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background: linear-gradient(180deg, rgba(47, 87, 235, 0) 0%, rgba(33, 44, 142, 0.62) 100%);
+  }
+
+  .sidebar.has-scroll:not(.is-scroll-end)::after {
+    opacity: 1;
   }
 
   .sidebar.is-open {

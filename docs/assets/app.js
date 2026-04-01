@@ -12,12 +12,25 @@ const pageByHash = new Map(
   links.map(link => [link.getAttribute("href").slice(1), link.dataset.page])
 );
 
+function updateSidebarScrollHint() {
+  const maxScroll = sidebar.scrollHeight - sidebar.clientHeight;
+  const hasScroll = maxScroll > 2;
+  const isScrollEnd = sidebar.scrollTop >= maxScroll - 2;
+
+  sidebar.classList.toggle("has-scroll", hasScroll);
+  sidebar.classList.toggle("is-scroll-end", !hasScroll || isScrollEnd);
+}
+
 function setMenuState(isOpen) {
   sidebar.classList.toggle("is-open", isOpen);
   backdrop.hidden = !isOpen;
   backdrop.classList.toggle("is-visible", isOpen);
   document.body.classList.toggle("menu-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+  if (isOpen) {
+    requestAnimationFrame(updateSidebarScrollHint);
+  }
 }
 
 function getLinkByPage(page) {
@@ -127,6 +140,8 @@ menuToggle.addEventListener("click", () => {
 
 menuClose.addEventListener("click", () => setMenuState(false));
 backdrop.addEventListener("click", () => setMenuState(false));
+sidebar.addEventListener("scroll", updateSidebarScrollHint);
+window.addEventListener("resize", updateSidebarScrollHint);
 
 window.addEventListener("keydown", event => {
   if (event.key === "Escape") {
@@ -141,3 +156,4 @@ window.addEventListener("hashchange", () => {
 
 const initialPage = pageByHash.get(window.location.hash.slice(1)) || defaultPage;
 loadPage(initialPage, { updateHash: false });
+updateSidebarScrollHint();
