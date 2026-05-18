@@ -209,6 +209,16 @@ a {
   transform: translateX(3px);
 }
 
+.nav-section {
+  margin: 18px 0 8px;
+  padding: 0 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
 .nav a.active {
   background: linear-gradient(135deg, var(--accent) 0%, #ff9f1a 100%);
   color: #fffdf9;
@@ -432,6 +442,26 @@ a {
 
 .doc-content a {
   color: var(--accent-strong);
+}
+
+.doc-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.doc-content th,
+.doc-content td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.doc-content th {
+  background: rgba(74, 76, 241, 0.08);
+  font-weight: 600;
 }
 
 .doc-content blockquote {
